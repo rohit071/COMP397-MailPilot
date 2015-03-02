@@ -6,8 +6,10 @@
 };
 var objects;
 (function (objects) {
+    // PLANE CLASS
     var Plane = (function (_super) {
         __extends(Plane, _super);
+        // CONSTRUCTOR
         function Plane() {
             _super.call(this, assets.getResult("plane"));
 
@@ -15,6 +17,7 @@ var objects;
             this.regX = this.getBounds().width * 0.5;
             this.regY = this.getBounds().height * 0.5;
         }
+        // PUBLIC METHODS
         Plane.prototype.update = function () {
             this.x = stage.mouseX;
         };

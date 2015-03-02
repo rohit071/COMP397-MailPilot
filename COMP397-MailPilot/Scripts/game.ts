@@ -1,4 +1,5 @@
 ﻿/// <reference path="objects/plane.ts" />
+/// <reference path="objects/island.ts" />
 
 
 
@@ -10,6 +11,7 @@ var assets: createjs.LoadQueue;
 
 // Game Objects 
 var plane: objects.Plane;
+var island: objects.Island;
 
 var manifest = [
     { id: "cloud", src: "assets/images/cloud.png" },
@@ -45,6 +47,7 @@ function gameLoop() {
 
 
     plane.update();
+    island.update();
 
 
 
@@ -59,10 +62,17 @@ function gameLoop() {
 
 // Our Game Kicks off in here
 function main() {
+    //Island object
+    island = new objects.Island();
+    stage.addChild(island);
 
 
+    //Plane object
     plane = new objects.Plane();
     stage.addChild(plane);
+
+
+    
 
     
 }

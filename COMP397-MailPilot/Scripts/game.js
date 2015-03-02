@@ -1,4 +1,5 @@
 ﻿/// <reference path="objects/plane.ts" />
+/// <reference path="objects/island.ts" />
 // Global game Variables
 var canvas;
 var stage;
@@ -6,6 +7,7 @@ var assets;
 
 // Game Objects
 var plane;
+var island;
 
 var manifest = [
     { id: "cloud", src: "assets/images/cloud.png" },
@@ -34,12 +36,18 @@ function init() {
 
 function gameLoop() {
     plane.update();
+    island.update();
 
     stage.update(); // Refreshes our stage
 }
 
 // Our Game Kicks off in here
 function main() {
+    //Island object
+    island = new objects.Island();
+    stage.addChild(island);
+
+    //Plane object
     plane = new objects.Plane();
     stage.addChild(plane);
 }

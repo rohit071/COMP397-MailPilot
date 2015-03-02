@@ -1,5 +1,7 @@
 ﻿module objects {
-export class Plane extends createjs.Bitmap {
+    // PLANE CLASS
+    export class Plane extends createjs.Bitmap {
+        // CONSTRUCTOR
         constructor() {
             super(assets.getResult("plane"));
 
@@ -9,13 +11,11 @@ export class Plane extends createjs.Bitmap {
 
         }
 
+        // PUBLIC METHODS
         public update() {
             this.x = stage.mouseX;
         }
 
     }
-
-
-
 
 } 
