@@ -1,4 +1,5 @@
-﻿module objects {
+﻿
+module objects {
     // PLANE CLASS
     export class Plane extends createjs.Bitmap {
         // CONSTRUCTOR

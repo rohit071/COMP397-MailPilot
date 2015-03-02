@@ -1,5 +1,5 @@
 ﻿module objects {
-    // PLANE CLASS
+    // ISLAND CLASS
     export class Island extends createjs.Bitmap {
         // PUBLIC INSTANCE VARIABLES
         width: number;

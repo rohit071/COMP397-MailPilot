@@ -1,4 +1,4 @@
-﻿var __extends = this.__extends || function (d, b) {
+var __extends = this.__extends || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
     __.prototype = b.prototype;
@@ -12,7 +12,6 @@ var objects;
         // CONSTRUCTOR
         function Plane() {
             _super.call(this, assets.getResult("plane"));
-
             this.y = 430;
             this.regX = this.getBounds().width * 0.5;
             this.regY = this.getBounds().height * 0.5;

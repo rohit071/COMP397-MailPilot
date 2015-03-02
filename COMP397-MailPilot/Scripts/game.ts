@@ -1,4 +1,13 @@
-﻿/// <reference path="objects/plane.ts" />
+﻿/// <reference path="typings/createjs-lib/createjs-lib.d.ts" />
+/// <reference path="typings/easeljs/easeljs.d.ts" />
+/// <reference path="typings/tweenjs/tweenjs.d.ts" />
+/// <reference path="typings/soundjs/soundjs.d.ts" />
+/// <reference path="typings/preloadjs/preloadjs.d.ts" />
+
+
+
+
+/// <reference path="objects/plane.ts" />
 /// <reference path="objects/island.ts" />
 
 
@@ -8,6 +17,7 @@
 var canvas;
 var stage: createjs.Stage;
 var assets: createjs.LoadQueue;
+
 
 // Game Objects 
 var plane: objects.Plane;
@@ -22,14 +32,13 @@ var manifest = [
 
 
 function Preload() {
-    assets = new createjs.LoadQueue(true); // create a new preloader
-    assets.installPlugin(createjs.Sound); // need plugin for sounds
+    assets = new createjs.LoadQueue(); // create a new preloader
+   // assets.installPlugin(createjs.Sound); // need plugin for sounds
     assets.on("complete", init, this); // when assets finished preloading - then init function
 
     assets.loadManifest(manifest);
 
 }
-
 
 
 
@@ -62,6 +71,8 @@ function gameLoop() {
 
 // Our Game Kicks off in here
 function main() {
+
+
     //Island object
     island = new objects.Island();
     stage.addChild(island);
@@ -70,7 +81,6 @@ function main() {
     //Plane object
     plane = new objects.Plane();
     stage.addChild(plane);
-
 
     
 
