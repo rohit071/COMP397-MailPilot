@@ -20,7 +20,7 @@ var manifest = [
 ];
 function Preload() {
     assets = new createjs.LoadQueue(); // create a new preloader
-    // assets.installPlugin(createjs.Sound); // need plugin for sounds
+    assets.installPlugin(createjs.Sound); // need plugin for sounds
     assets.on("complete", init, this); // when assets finished preloading - then init function
     assets.loadManifest(manifest);
 }
