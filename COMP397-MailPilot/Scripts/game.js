@@ -1,20 +1,25 @@
-﻿// Global game Variables
+﻿/// <reference path="objects/plane.ts" />
+// Global game Variables
 var canvas;
 var stage;
 var assets;
 
 // Game Objects
+var plane;
+
+var manifest = [
+    { id: "cloud", src: "assets/images/cloud.png" },
+    { id: "island", src: "assets/images/island.png" },
+    { id: "ocean", src: "assets/images/ocean.gif" },
+    { id: "plane", src: "assets/images/plane.png" }
+];
+
 function Preload() {
-    assets = new createjs.LoadQueue(); // create a new preloader
+    assets = new createjs.LoadQueue(true); // create a new preloader
     assets.installPlugin(createjs.Sound); // need plugin for sounds
     assets.on("complete", init, this); // when assets finished preloading - then init function
 
-    assets.loadManifest([
-        { id: "cloud", src: "assets/images/cloud.png" },
-        { id: "island", src: "assets/images/island.png" },
-        { id: "ocean", src: "assets/images/ocean.gif" },
-        { id: "plane", src: "assets/images/plane.png" }
-    ]);
+    assets.loadManifest(manifest);
 }
 
 function init() {
@@ -28,10 +33,14 @@ function init() {
 }
 
 function gameLoop() {
+    plane.update();
+
     stage.update(); // Refreshes our stage
 }
 
 // Our Game Kicks off in here
 function main() {
+    plane = new objects.Plane();
+    stage.addChild(plane);
 }
 //# sourceMappingURL=game.js.map
