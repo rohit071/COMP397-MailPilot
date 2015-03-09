@@ -11,13 +11,10 @@ var objects;
         __extends(Island, _super);
         // CONSTRUCTOR
         function Island() {
-            _super.call(this, assetLoader.getResult("island"));
+            _super.call(this, "island");
+            this.sound = "yay";
             this._dy = 5;
-            this.width = this.getBounds().width;
-            this.height = this.getBounds().height;
             this.reset();
-            this.regX = this.width * 0.5;
-            this.regY = this.height * 0.5;
         }
         // PUBLIC METHODS ++++++++++++++++++++++++++++++++++++++++++
         Island.prototype.update = function () {
@@ -37,7 +34,7 @@ var objects;
             }
         };
         return Island;
-    })(createjs.Bitmap);
+    })(objects.GameObject);
     objects.Island = Island;
 })(objects || (objects = {}));
 //# sourceMappingURL=island.js.map

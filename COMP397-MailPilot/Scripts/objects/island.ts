@@ -1,22 +1,14 @@
 ﻿module objects {
     // ISLAND CLASS
-    export class Island extends createjs.Bitmap {
-        // PUBLIC INSTANCE VARIABLES
-        public width: number;
-        public height: number;
-        private _dy: number = 5;
+    export class Island extends objects.GameObject{
 
         // CONSTRUCTOR
         constructor() {
-            super(assetLoader.getResult("island"));
-
-            this.width = this.getBounds().width;
-            this.height = this.getBounds().height;
+            super("island");
+            this.sound = "yay";
+            this._dy = 5;
 
             this.reset();
-            this.regX = this.width * 0.5;
-            this.regY = this.height * 0.5;
-
         }
 
         // PUBLIC METHODS ++++++++++++++++++++++++++++++++++++++++++

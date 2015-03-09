@@ -6,25 +6,20 @@ var __extends = this.__extends || function (d, b) {
 };
 var objects;
 (function (objects) {
-    // PLANE CLASS
-    var Plane = (function (_super) {
-        __extends(Plane, _super);
+    // GAMEOBJECT CLASS
+    var GameObject = (function (_super) {
+        __extends(GameObject, _super);
         // CONSTRUCTOR
-        function Plane() {
-            _super.call(this, assetLoader.getResult("plane"));
+        function GameObject(assetString) {
+            _super.call(this, assetLoader.getResult(assetString));
+            this.isColliding = false;
             this.width = this.getBounds().width;
             this.height = this.getBounds().height;
-            this.y = 430;
             this.regX = this.width * 0.5;
             this.regY = this.height * 0.5;
-            createjs.Sound.play("engine", { loop: -1 });
         }
-        // PUBLIC METHODS
-        Plane.prototype.update = function () {
-            this.x = stage.mouseX;
-        };
-        return Plane;
+        return GameObject;
     })(createjs.Bitmap);
-    objects.Plane = Plane;
+    objects.GameObject = GameObject;
 })(objects || (objects = {}));
-//# sourceMappingURL=plane.js.map
+//# sourceMappingURL=gameobject.js.map

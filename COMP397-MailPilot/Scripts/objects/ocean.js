@@ -6,37 +6,35 @@ var __extends = this.__extends || function (d, b) {
 };
 var objects;
 (function (objects) {
-    // CLOUD CLASS
-    var Cloud = (function (_super) {
-        __extends(Cloud, _super);
+    // OCEAN CLASS
+    var Ocean = (function (_super) {
+        __extends(Ocean, _super);
         // CONSTRUCTOR
-        function Cloud() {
-            _super.call(this, "cloud");
-            this.sound = "thunder";
+        function Ocean() {
+            _super.call(this, assetLoader.getResult("ocean"));
+            // PUBLIC INSTANCE VARIABLES
+            this._dy = 5;
             this.reset();
         }
         // PUBLIC METHODS ++++++++++++++++++++++++++++++++++++++++++
-        Cloud.prototype.update = function () {
+        Ocean.prototype.update = function () {
             this.y += this._dy;
-            this.x += this._dx;
             this._checkBounds();
         };
         // Reset position of island to the top
-        Cloud.prototype.reset = function () {
-            this.y = -this.height;
-            this.x = Math.floor(Math.random() * 640);
-            this._dy = Math.floor(Math.random() * 5) + 5;
-            this._dx = Math.floor(Math.random() * 4) - 2;
+        Ocean.prototype.reset = function () {
+            this.y = -960;
+            this.x = 0;
         };
         // PRIVATE METHODS +++++++++++++++++++++++++++++++++++++++++
-        Cloud.prototype._checkBounds = function () {
+        Ocean.prototype._checkBounds = function () {
             // check if island has left the bottom of the screen
-            if (this.y >= (480 + this.height)) {
+            if (this.y === 0) {
                 this.reset();
             }
         };
-        return Cloud;
-    })(objects.GameObject);
-    objects.Cloud = Cloud;
+        return Ocean;
+    })(createjs.Bitmap);
+    objects.Ocean = Ocean;
 })(objects || (objects = {}));
-//# sourceMappingURL=cloud.js.map
+//# sourceMappingURL=ocean.js.map
