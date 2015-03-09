@@ -1,14 +1,15 @@
 ﻿module objects {
-    // ISLAND CLASS
-    export class Island extends createjs.Bitmap {
+    // CLOUD CLASS
+    export class Cloud extends createjs.Bitmap {
         // PUBLIC INSTANCE VARIABLES
         public width: number;
         public height: number;
-        private _dy: number = 5;
+        private _dy: number;
+        private _dx: number;
 
         // CONSTRUCTOR
         constructor() {
-            super(assetLoader.getResult("island"));
+            super(assetLoader.getResult("cloud"));
 
             this.width = this.getBounds().width;
             this.height = this.getBounds().height;
@@ -22,6 +23,7 @@
         // PUBLIC METHODS ++++++++++++++++++++++++++++++++++++++++++
         public update() {
             this.y += this._dy;
+            this.x += this._dx;
 
             this._checkBounds();
         }
@@ -30,6 +32,8 @@
         public reset() {
             this.y = -this.height;
             this.x = Math.floor(Math.random() * 640);
+            this._dy = Math.floor(Math.random() * 5) + 5;
+            this._dx = Math.floor(Math.random() * 4) - 2;
         }
 
         // PRIVATE METHODS +++++++++++++++++++++++++++++++++++++++++
@@ -42,4 +46,4 @@
 
     }
 
-} 
+}  

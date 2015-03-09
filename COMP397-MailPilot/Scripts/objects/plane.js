@@ -11,7 +11,7 @@ var objects;
         __extends(Plane, _super);
         // CONSTRUCTOR
         function Plane() {
-            _super.call(this, assets.getResult("plane"));
+            _super.call(this, assetLoader.getResult("plane"));
             this.y = 430;
             this.regX = this.getBounds().width * 0.5;
             this.regY = this.getBounds().height * 0.5;

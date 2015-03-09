@@ -5,10 +5,9 @@
 /// <reference path="typings/preloadjs/preloadjs.d.ts" />
 
 
-
-
 /// <reference path="objects/plane.ts" />
 /// <reference path="objects/island.ts" />
+/// <reference path="objects/cloud.ts" />
 
 
 
@@ -16,12 +15,13 @@
 // Global game Variables
 var canvas;
 var stage: createjs.Stage;
-var assets: createjs.LoadQueue;
+var assetLoader: createjs.LoadQueue;
 
 
 // Game Objects 
 var plane: objects.Plane;
-var island: objects.Island;
+var island: objects.Island
+var clouds: objects.Cloud[] = [];
 
 var manifest = [
     { id: "cloud", src: "assets/images/cloud.png" },
@@ -32,11 +32,11 @@ var manifest = [
 
 
 function Preload() {
-    assets = new createjs.LoadQueue(); // create a new preloader
-    assets.installPlugin(createjs.Sound); // need plugin for sounds
-    assets.on("complete", init, this); // when assets finished preloading - then init function
+    assetLoader = new createjs.LoadQueue(); // create a new preloader
+    assetLoader.installPlugin(createjs.Sound); // need plugin for sounds
+    assetLoader.on("complete", init, this); // when assets finished preloading - then init function
 
-    assets.loadManifest(manifest);
+    assetLoader.loadManifest(manifest);
 
 }
 
@@ -57,6 +57,10 @@ function gameLoop() {
 
     plane.update();
     island.update();
+
+    for (var cloud = 2; cloud >= 0; cloud--) {
+        clouds[cloud].update();
+    }
 
 
 
@@ -82,6 +86,15 @@ function main() {
     plane = new objects.Plane();
     stage.addChild(plane);
 
+    //Cloud object
+    for (var cloud = 2; cloud >= 0; cloud--) {
+        clouds[cloud] = new objects.Cloud();
+        stage.addChild(clouds[cloud]);
+    }
+
+
+
+    
     
 
     
