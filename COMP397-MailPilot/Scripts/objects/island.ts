@@ -6,28 +6,28 @@
         constructor() {
             super("island");
             this.sound = "yay";
-            this._dy = 5;
+            this._dx = 5;
 
             this.reset();
         }
 
         // PUBLIC METHODS ++++++++++++++++++++++++++++++++++++++++++
         public update() {
-            this.y += this._dy;
+            this.x += this._dx;
 
             this._checkBounds();
         }
 
-        // Reset position of island to the top
+        // Reset position of island to the left
         public reset() {
-            this.y = -this.height;
-            this.x = Math.floor(Math.random() * 640);
+            this.x = -this.height;
+            this.y = Math.floor(Math.random() * 300 + 100);
         }
 
         // PRIVATE METHODS +++++++++++++++++++++++++++++++++++++++++
         private _checkBounds() {
-            // check if island has left the bottom of the screen
-            if (this.y >= (480 + this.height)) {
+            // check if island has left the corner of the screen
+            if (this.x >= (580 + this.height)) {
                 this.reset();
             }
         }

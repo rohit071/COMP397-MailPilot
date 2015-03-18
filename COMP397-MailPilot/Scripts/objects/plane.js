@@ -1,4 +1,4 @@
-var __extends = this.__extends || function (d, b) {
+﻿var __extends = this.__extends || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
     __.prototype = b.prototype;
@@ -12,19 +12,23 @@ var objects;
         // CONSTRUCTOR
         function Plane() {
             _super.call(this, assetLoader.getResult("plane"));
+
             this.width = this.getBounds().width;
             this.height = this.getBounds().height;
-            this.y = 430;
+
+            this.x = 550;
             this.regX = this.width * 0.5;
             this.regY = this.height * 0.5;
             createjs.Sound.play("engine", { loop: -1 });
         }
         // PUBLIC METHODS
         Plane.prototype.update = function () {
-            this.x = stage.mouseX;
+            if (stage.mouseY < 400 && stage.mouseY > 100)
+                this.y = stage.mouseY;
         };
         return Plane;
     })(createjs.Bitmap);
     objects.Plane = Plane;
 })(objects || (objects = {}));
+5;
 //# sourceMappingURL=plane.js.map

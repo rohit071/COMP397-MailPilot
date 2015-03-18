@@ -11,7 +11,7 @@ module objects {
             this.width = this.getBounds().width;
             this.height = this.getBounds().height;
 
-            this.y = 430;
+            this.x = 550;
             this.regX = this.width * 0.5;
             this.regY = this.height * 0.5;
             createjs.Sound.play("engine", {loop: -1});
@@ -19,9 +19,13 @@ module objects {
 
         // PUBLIC METHODS
         public update() {
-            this.x = stage.mouseX;
+            if(stage.mouseY < 400 && stage.mouseY > 100)
+                this.y = stage.mouseY;
+
+            
+            
         }
 
     }
 
-} 
+} 5

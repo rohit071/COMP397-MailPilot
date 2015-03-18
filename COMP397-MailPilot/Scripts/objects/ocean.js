@@ -1,4 +1,4 @@
-var __extends = this.__extends || function (d, b) {
+﻿var __extends = this.__extends || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
     __.prototype = b.prototype;
@@ -13,23 +13,27 @@ var objects;
         function Ocean() {
             _super.call(this, assetLoader.getResult("ocean"));
             // PUBLIC INSTANCE VARIABLES
-            this._dy = 5;
+            this._dx = 5;
+
             this.reset();
         }
         // PUBLIC METHODS ++++++++++++++++++++++++++++++++++++++++++
         Ocean.prototype.update = function () {
-            this.y += this._dy;
+            this.x += this._dx;
+
             this._checkBounds();
         };
+
         // Reset position of island to the top
         Ocean.prototype.reset = function () {
-            this.y = -960;
-            this.x = 0;
+            this.x = -960;
+            this.y = 0;
         };
+
         // PRIVATE METHODS +++++++++++++++++++++++++++++++++++++++++
         Ocean.prototype._checkBounds = function () {
             // check if island has left the bottom of the screen
-            if (this.y === 0) {
+            if (this.x === 0) {
                 this.reset();
             }
         };
