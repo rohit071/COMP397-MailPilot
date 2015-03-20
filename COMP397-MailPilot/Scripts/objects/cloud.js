@@ -1,4 +1,4 @@
-var __extends = this.__extends || function (d, b) {
+﻿var __extends = this.__extends || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
     __.prototype = b.prototype;
@@ -19,8 +19,10 @@ var objects;
         Cloud.prototype.update = function () {
             this.y += this._dy;
             this.x += this._dx;
+
             this._checkBounds();
         };
+
         // Reset position of island to the top
         Cloud.prototype.reset = function () {
             this.y = -this.height;
@@ -28,6 +30,7 @@ var objects;
             this._dy = Math.floor(Math.random() * 5) + 5;
             this._dx = Math.floor(Math.random() * 4) - 2;
         };
+
         // PRIVATE METHODS +++++++++++++++++++++++++++++++++++++++++
         Cloud.prototype._checkBounds = function () {
             // check if island has left the bottom of the screen

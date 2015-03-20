@@ -9,6 +9,7 @@
 /// <reference path="objects/island.ts" />
 /// <reference path="objects/cloud.ts" />
 /// <reference path="objects/ocean.ts" />
+/// <reference path="objects/bullet.ts" />
 
 
 
@@ -25,14 +26,18 @@ var island: objects.Island
 var clouds: objects.Cloud[] = [];
 var ocean: objects.Ocean;
 
+
 var manifest = [
-    { id: "cloud", src: "assets/images/cloud.png" },
+    { id: "cloud", src: "assets/images/bomb.png" },
     { id: "island", src: "assets/images/island.png" },
     { id: "ocean", src: "assets/images/ocean.gif" },
     { id: "plane", src: "assets/images/plane.png" },
     { id: "engine", src: "assets/audio/engine.ogg" },
     { id: "yay", src: "assets/audio/yay.ogg" },
-    { id: "thunder", src: "assets/audio/thunder.ogg" }
+    { id: "thunder", src: "assets/audio/thunder.ogg" },
+    { id: "bomb", src: "assets/images/plane.png" }
+  
+
 ];
 
 
@@ -47,14 +52,19 @@ function Preload() {
 
 
 
+
 function init() {
     canvas = document.getElementById("canvas");
     stage = new createjs.Stage(canvas);
     stage.enableMouseOver(20); // Enable mouse events
+    stage.addEventListener("click", fire);
+    
+   
     createjs.Ticker.setFPS(60); // 60 frames per second
     createjs.Ticker.addEventListener("tick", gameLoop);
 
     main();
+    
 }
 
 
@@ -69,6 +79,8 @@ function distance(p1: createjs.Point, p2: createjs.Point): number {
 function checkCollision(collider: objects.GameObject) {
     var planePosition: createjs.Point = new createjs.Point(plane.x, plane.y);
     var cloudPosition: createjs.Point = new createjs.Point(collider.x, collider.y);
+    
+    
     var theDistance = distance(planePosition, cloudPosition);
     if (theDistance < ((plane.height * 0.5) + (collider.height * 0.5))) {
         if (collider.isColliding != true) {
@@ -80,7 +92,21 @@ function checkCollision(collider: objects.GameObject) {
     }
 }
 
+function fire() {
+    //  alert("clicked"); 
+    var bullet = [] ; 
+    var b = new createjs.Bitmap("assets/images/bomb.png"); //Load bullet image
 
+
+    b.x = plane.x - 50; // Place bullet image in front of the vehicle
+    b.y = plane.y - 20;
+
+    console.log('pushed');
+    stage.addChild(b);
+    
+
+    
+}
 
 
 
@@ -92,6 +118,8 @@ function gameLoop() {
 
     plane.update();
 
+    
+    
     for (var cloud = 2; cloud >= 0; cloud--) {
         clouds[cloud].update();
 
@@ -100,6 +128,7 @@ function gameLoop() {
 
     checkCollision(island);
 
+    
     stage.update(); // Refreshes our stage
 }
 
@@ -119,20 +148,23 @@ function main() {
     stage.addChild(island);
 
 
-    //Plane object
     plane = new objects.Plane();
     stage.addChild(plane);
 
+
+    
+
+    
+    
+    
     //Cloud object
     for (var cloud = 2; cloud >= 0; cloud--) {
         clouds[cloud] = new objects.Cloud();
         stage.addChild(clouds[cloud]);
-    }
+    };
 
-
-
-    
-    
+   
 
     
 }
+

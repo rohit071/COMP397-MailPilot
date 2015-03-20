@@ -23,12 +23,11 @@ var objects;
         }
         // PUBLIC METHODS
         Plane.prototype.update = function () {
-            if (stage.mouseY < 400 && stage.mouseY > 100)
+            if (stage.mouseY < 435 && stage.mouseY > 40)
                 this.y = stage.mouseY;
         };
         return Plane;
     })(createjs.Bitmap);
     objects.Plane = Plane;
 })(objects || (objects = {}));
-5;
 //# sourceMappingURL=plane.js.map

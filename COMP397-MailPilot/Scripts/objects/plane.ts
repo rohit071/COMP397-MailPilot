@@ -19,7 +19,7 @@ module objects {
 
         // PUBLIC METHODS
         public update() {
-            if(stage.mouseY < 400 && stage.mouseY > 100)
+            if(stage.mouseY < 435 && stage.mouseY > 40)
                 this.y = stage.mouseY;
 
             
@@ -28,4 +28,4 @@ module objects {
 
     }
 
-} 5
+} 
