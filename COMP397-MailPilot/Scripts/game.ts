@@ -94,7 +94,7 @@ function checkCollision(collider: objects.GameObject) {
 
 function fire() {
     //  alert("clicked"); 
-    var bullet = [] ; 
+    var bullet = [];
     var b = new createjs.Bitmap("assets/images/bomb.png"); //Load bullet image
 
 
@@ -103,11 +103,19 @@ function fire() {
 
     console.log('pushed');
     stage.addChild(b);
+    createjs.Tween.get(b, { loop: false })
+        .to({ x: 0, y: 240 }, 1000);
+    createjs.Ticker.addEventListener("tick", tickHandler);
     
 
-    
+
 }
 
+
+
+function tickHandler(e) {
+    stage.update();
+}
 
 
 function gameLoop() {

@@ -83,6 +83,12 @@ function fire() {
 
     console.log('pushed');
     stage.addChild(b);
+    createjs.Tween.get(b, { loop: false }).to({ x: 0, y: 240 }, 1000);
+    createjs.Ticker.addEventListener("tick", tickHandler);
+}
+
+function tickHandler(e) {
+    stage.update();
 }
 
 function gameLoop() {
