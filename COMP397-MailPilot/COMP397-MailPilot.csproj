@@ -64,6 +64,7 @@
     <Content Include="assets\audio\thunder.ogg" />
     <Content Include="assets\audio\yay.ogg" />
     <Content Include="assets\images\bomb.png" />
+    <Content Include="game.html" />
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
