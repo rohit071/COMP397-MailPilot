@@ -33,6 +33,7 @@ var stateChanged = false;
 var gamePlay;
 var gameOver;
 var menu;
+var help;
 
 var manifest = [
     { id: "cloud", src: "assets/images/bomb.png" },
@@ -41,6 +42,7 @@ var manifest = [
     { id: "plane", src: "assets/images/plane.png" },
     { id: "playButton", src: "assets/images/playButton.png" },
     { id: "tryAgainButton", src: "assets/images/tryAgainButton.png" },
+    { id: "helpButton", src: "assets/images/helpButton.png" },
     { id: "engine", src: "assets/audio/engine.ogg" },
     { id: "yay", src: "assets/audio/yay.ogg" },
     { id: "thunder", src: "assets/audio/thunder.ogg" }
@@ -113,6 +115,12 @@ function changeState(state) {
             // instantiate game over screen
             gameOver = new states.GameOver();
             currentStateFunction = gameOver;
+            break;
+
+        case constants.HELP_STATE:
+            help = new states.Help();
+
+            currentStateFunction = help;
             break;
     }
 }
