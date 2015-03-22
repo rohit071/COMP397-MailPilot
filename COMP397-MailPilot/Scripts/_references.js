@@ -3,6 +3,4 @@
 /// <reference path="lib/soundjs-0.6.0.min.js" />
 /// <reference path="lib/preloadjs-0.6.0.min.js" />
 /// <reference path="lib/tweenjs-0.6.0.min.js" />
-/// <reference path="lib/tween.js" />
-/// <reference path="lib/easel.js" />
-/// <reference path="lib/sound.js" />
+/// <reference path="lib/stats.js" />

@@ -25,6 +25,7 @@ var objects;
         Plane.prototype.update = function () {
             if (stage.mouseY < 435 && stage.mouseY > 40)
                 this.y = stage.mouseY;
+            this.x = stage.mouseX;
         };
         return Plane;
     })(createjs.Bitmap);

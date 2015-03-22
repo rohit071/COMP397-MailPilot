@@ -14,16 +14,17 @@ module objects {
             this.x = 550;
             this.regX = this.width * 0.5;
             this.regY = this.height * 0.5;
-            createjs.Sound.play("engine", {loop: -1});
+            createjs.Sound.play("engine", { loop: -1 });
         }
 
         // PUBLIC METHODS
         public update() {
-            if(stage.mouseY < 435 && stage.mouseY > 40)
+            if (stage.mouseY < 435 && stage.mouseY > 40)
                 this.y = stage.mouseY;
+            this.x = stage.mouseX;
 
-            
-            
+
+
         }
 
     }
